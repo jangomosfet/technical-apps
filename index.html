@@ -3,87 +3,639 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>David Burchianti - Technical Apps</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: #f5f7fb;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+
+        header {
+            background: linear-gradient(135deg, #0a5ed7, #007aff);
+            color: white;
+            padding: 70px 20px 80px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 42px;
+            font-weight: 750;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.92;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #e5e9f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-container {
+            max-width: 1050px;
+            margin: auto;
+            padding: 15px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-weight: 700;
+            color: #0a5ed7;
+        }
+
+        .nav-links a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: #384357;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #007aff;
+        }
+
+        /* GENERAL */
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+            padding: 65px 20px;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 32px;
+        }
+
+        .section-description {
+            max-width: 650px;
+            text-align: center;
+            margin: 0 auto 40px;
+            color: #667085;
+        }
+
+        /* APP CARDS */
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(260px, 1fr));
+
+            gap: 22px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 18px;
+            padding: 28px;
+            border: 1px solid #e8ecf2;
+
+            box-shadow:
+                0 5px 20px rgba(30, 60, 100, 0.06);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 10px 28px rgba(30, 60, 100, 0.11);
+        }
+
+        .app-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 15px;
+
+            background:
+                linear-gradient(135deg, #0a5ed7, #1687ff);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 27px;
+
+            margin-bottom: 20px;
+        }
+
+        .app-card h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .app-card p {
+            color: #667085;
+            font-size: 15px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 5px 10px;
+
+            border-radius: 30px;
+
+            background: #edf5ff;
+            color: #0069d9;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* INFORMATION SECTIONS */
+
+        .info-card {
+            background: white;
+            border-radius: 18px;
+
+            border: 1px solid #e8ecf2;
+
+            padding: 35px;
+
+            box-shadow:
+                0 5px 20px rgba(30, 60, 100, 0.05);
+        }
+
+        .info-card h3 {
+            margin-top: 25px;
+            margin-bottom: 8px;
+        }
+
+        .info-card h3:first-child {
+            margin-top: 0;
+        }
+
+        .info-card p {
+            color: #5f6878;
+            margin-bottom: 12px;
+        }
+
+        .contact-button {
+            display: inline-block;
+
+            margin-top: 15px;
+            padding: 11px 18px;
+
+            background: #007aff;
+            color: white;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-button:hover {
+            background: #0067d8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+
+            color: #7b8495;
+            font-size: 14px;
+
+            border-top: 1px solid #e5e9f0;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 55px 20px 65px;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 50px 18px;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+        }
+
+    </style>
 </head>
 
-<body style="font-family: Arial, sans-serif;
-             max-width: 800px;
-             margin: 50px auto;
-             padding: 20px;
-             line-height: 1.6;">
 
-    <h1>David Burchianti - Technical Apps</h1>
+<body>
 
-    <p>
-        A collection of simple technical utilities for engineers,
-        technicians and electronics enthusiasts.
-    </p>
 
-    <hr>
+<!-- NAVIGATION -->
 
-    <h2>Applications</h2>
+<nav>
+    <div class="nav-container">
 
-    <h3>SignaCALC</h3>
-    <p>
-        Technical utility for sensor, temperature and industrial
-        signal calculations and conversions.
-    </p>
+        <div class="brand">
+            Technical Apps
+        </div>
 
-    <!-- Future applications can be added here -->
+        <div class="nav-links">
+            <a href="#apps">Apps</a>
+            <a href="#support">Support</a>
+            <a href="#privacy">Privacy</a>
+        </div>
 
-    <hr>
+    </div>
+</nav>
 
-    <h2 id="support">Support</h2>
 
-    <p>
-        For support, bug reports, questions or suggestions regarding
-        any of my applications, please contact:
-    </p>
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>Technical Apps</h1>
 
     <p>
-        <strong>Email:</strong> burchiantidavid@yahoo.it
+        Simple and practical technical utilities for engineers,
+        technicians, electricians and electronics enthusiasts.
     </p>
 
-    <hr>
+</header>
 
-    <h2 id="privacy">Privacy Policy</h2>
 
-    <p><strong>Last updated: August 10, 2026</strong></p>
 
-    <p>
-        The applications listed on this website are independently
-        developed by David Burchianti.
-    </p>
+<!-- APPLICATIONS -->
 
-    <p>
-        Unless otherwise specified, these applications do not collect,
-        store, transmit or share personal information.
-    </p>
+<section id="apps">
 
-    <p>
-        Calculations and user-entered values are processed locally
-        on the user's device.
-    </p>
+    <div class="container">
 
-    <p>
-        The applications do not require user accounts and do not use
-        analytics or advertising services unless otherwise specified
-        in the description of the individual application.
-    </p>
+        <h2 class="section-title">
+            Applications
+        </h2>
 
-    <h3>Contact</h3>
+        <p class="section-description">
+            A growing collection of lightweight tools designed
+            to make everyday technical calculations faster and easier.
+        </p>
 
-    <p>
-        For questions regarding this Privacy Policy, please contact:
-    </p>
 
-    <p>
-        <strong>Email:</strong> burchiantidavid@yahoo.it
-    </p>
+        <div class="apps-grid">
 
-    <hr>
 
-    <p>© 2026 David Burchianti</p>
+            <!-- SIGNACALC -->
+
+            <div class="app-card">
+
+                <div class="app-icon">
+                    ⚙
+                </div>
+
+                <h3>SignaCALC</h3>
+
+                <p>
+                    Sensor and industrial signal calculator for
+                    temperature sensors, thermocouples and common
+                    analogue signal standards.
+                </p>
+
+                <span class="status">
+                    Available soon
+                </span>
+
+            </div>
+
+
+            <!-- POWERCALC -->
+
+            <div class="app-card">
+
+                <div class="app-icon">
+                    ⚡
+                </div>
+
+                <h3>PowerCALC</h3>
+
+                <p>
+                    Electrical cable sizing and voltage drop
+                    calculator for practical electrical applications.
+                </p>
+
+                <span class="status">
+                    In development
+                </span>
+
+            </div>
+
+
+            <!-- OPACALC -->
+
+            <div class="app-card">
+
+                <div class="app-icon">
+                    △
+                </div>
+
+                <h3>OpaCALC</h3>
+
+                <p>
+                    Operational amplifier calculator for common
+                    configurations, gains and resistor values.
+                </p>
+
+                <span class="status">
+                    In development
+                </span>
+
+            </div>
+
+
+            <!-- RESISTOR -->
+
+            <div class="app-card">
+
+                <div class="app-icon">
+                    Ω
+                </div>
+
+                <h3>Resistor Calculator</h3>
+
+                <p>
+                    Quickly determine resistor values using
+                    standard resistor colour codes.
+                </p>
+
+                <span class="status">
+                    In development
+                </span>
+
+            </div>
+
+
+            <!-- FUNCTION GENERATOR -->
+
+            <div class="app-card">
+
+                <div class="app-icon">
+                    ∿
+                </div>
+
+                <h3>Function Generator</h3>
+
+                <p>
+                    Audio-based function generator capable of
+                    producing independent waveforms on stereo channels.
+                </p>
+
+                <span class="status">
+                    In development
+                </span>
+
+            </div>
+
+
+            <!-- FFT -->
+
+            <div class="app-card">
+
+                <div class="app-icon">
+                    ⌁
+                </div>
+
+                <h3>FFT Analyzer</h3>
+
+                <p>
+                    Frequency spectrum analysis tool with automatic
+                    identification of the main frequency peaks.
+                </p>
+
+                <span class="status">
+                    In development
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- SUPPORT -->
+
+<section id="support">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Support
+        </h2>
+
+        <p class="section-description">
+            Need help with one of the applications?
+        </p>
+
+
+        <div class="info-card">
+
+            <h3>Technical Support</h3>
+
+            <p>
+                If you encounter a problem, discover a bug,
+                have a question or would like to suggest an
+                improvement, you can contact me by email.
+            </p>
+
+            <p>
+                Please include the name of the application
+                and a short description of the issue.
+            </p>
+
+            <a
+                class="contact-button"
+                href="mailto:TUA-EMAIL">
+                Contact Support
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PRIVACY -->
+
+<section id="privacy">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Privacy Policy
+        </h2>
+
+        <p class="section-description">
+            Privacy information for the applications listed on this website.
+        </p>
+
+
+        <div class="info-card">
+
+            <p>
+                <strong>Last updated: August 10, 2026</strong>
+            </p>
+
+
+            <h3>General Information</h3>
+
+            <p>
+                The applications listed on this website are
+                independently developed by David Burchianti.
+            </p>
+
+
+            <h3>Data Collection</h3>
+
+            <p>
+                Unless otherwise specified, these applications
+                do not collect, store, transmit or share personal data.
+            </p>
+
+
+            <h3>Local Processing</h3>
+
+            <p>
+                Calculations and values entered into the applications
+                are processed locally on the user's device.
+            </p>
+
+
+            <h3>User Accounts</h3>
+
+            <p>
+                The applications do not require users to create
+                accounts or provide personal information.
+            </p>
+
+
+            <h3>Analytics and Advertising</h3>
+
+            <p>
+                Unless otherwise specified for an individual
+                application, the applications do not use
+                advertising or analytics services.
+            </p>
+
+
+            <h3>Third-Party Services</h3>
+
+            <p>
+                If an application uses third-party services in
+                the future, this Privacy Policy will be updated
+                accordingly.
+            </p>
+
+
+            <h3>Changes to this Policy</h3>
+
+            <p>
+                This Privacy Policy may be updated if the
+                functionality of the applications changes.
+            </p>
+
+
+            <h3>Contact</h3>
+
+            <p>
+                For questions concerning this Privacy Policy
+                or any of the applications, please contact:
+            </p>
+
+            <p>
+                <strong>TUA-EMAIL</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 David Burchianti · Technical Apps
+
+</footer>
+
 
 </body>
 </html>
